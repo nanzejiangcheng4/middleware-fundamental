@@ -1,11 +1,21 @@
 <script setup lang="ts">
 import type { User } from "@/interfaces";
 
-const loginTokenCookie = useCookie<string | null>("loginToken");
-const loginUserCookie = useCookie<User | null>("loginUser");
-if (loginTokenCookie.value == null || loginUserCookie.value == null) {
-  await navigateTo("/login");
-}
+console.log("index.vue started"); //1
+//2
+definePageMeta({
+  //3
+  middleware: (to, from) => {
+    const loginTokenCookie = useCookie<string | null>("loginToken"); //4
+    const loginUserCookie = useCookie<User | null>("loginUser");
+    if (loginTokenCookie.value == null || loginUserCookie.value == null) {
+      return navigateTo("/login");
+    } else {
+      //5
+      return;
+    }
+  },
+});
 </script>
 <template>
   <h1>TOP</h1>
