@@ -1,7 +1,7 @@
 <script setup lang="ts">
 console.log("index.vue started"); //1
 definePageMeta({
-  middleware: ["loggedin-check"],
+  middleware: ["logging", "loggedin-check"],
 });
 </script>
 <template>
