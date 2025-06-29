@@ -3,6 +3,7 @@ import type { Member } from "@/interfaces";
 
 definePageMeta({
   layout: "member",
+  middleware: ["loggedin-check"],
 });
 
 const asyncData = useLazyFetch("/member-management/members");
